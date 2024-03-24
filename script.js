@@ -4,7 +4,7 @@ let aPaterno_elemento = document.getElementById("aPaterno");
 let aMaterno_elemento = document.getElementById("aMaterno");
 let nombres_elemento = document.getElementById("nombres");
 let correo_elemento = document.getElementById("correo");
-const fechaNacimiento = document.getElementById("fecha");//
+const fechaNacimiento_elemento = document.getElementById("fecha");//
 const valorNoControl_elemento = document.getElementById("noControl");
 let edadInput = document.getElementById("edad");
 let telefono_elemento = document.getElementById("telefono");
@@ -27,10 +27,27 @@ botonEnviar.addEventListener("click", function () {
     alert("Se agregó con éxito");
 
     mensajeErrorFaltantes.innerText = "";
-    limpiarForm();
+    let id=valorNoControl_elemento.value;
+    let nombre=nombres_elemento.value;
+    let apellidos= aPaterno_elemento.value+ " " +aMaterno_elemento.value;
+    let correo=correo_elemento.value;
+    let edad=edadInput.value;
+    let fechaNacimiento=fechaNacimiento_elemento.value;
+    const envio={
+     id,nombre,apellidos,numeroFinal, correo,edad,fechaNacimiento
+    }
+    const envios = JSON.parse(localStorage.getItem("envios")) || [];
+         // Agregar el nuevo envío al arreglo
+        envios.push(envio);
+         // Guardar el arreglo actualizado en el almacenamiento local
+        localStorage.setItem("envios", JSON.stringify(envios));
+         // Redireccionar a la página de resultados
+        window.open("resultados.html",'_blank');
+   
+    // limpiarForm();
   }
 
-  console.log(contador);
+  
 });
 function limpiarForm() {
   document.location.reload();
@@ -199,7 +216,7 @@ function calcularEdad() {
   let edad = 0;
   let labelFecha = document.getElementById("mensajeErrorFecha");//label para mensaje de error fechaNacimiento
 
-  const fechaArray = fechaNacimiento.value.split("-");//crea un array 3 elementos con los valores de fecha de nacimiento {año,mes,dia}
+  const fechaArray = fechaNacimiento_elemento.value.split("-");//crea un array 3 elementos con los valores de fecha de nacimiento {año,mes,dia}
   const fechaHoy = new Date().toJSON().slice(0, 10).split("-");//crea un array de 3 elementos con los valores de fecha del dia de hoy {año,mes,dia}
   let mesHoy = parseInt(fechaHoy[1]);// guarda el mes actual
   let mesNacimiento = parseInt(fechaArray[1]);//guarda el mes de la fecha de nacimiento del array
@@ -208,20 +225,20 @@ function calcularEdad() {
   let anioHoy = parseInt(fechaHoy[0]); // guarda el anio de la fecha de hoy del array
   let anioNacimiento = parseInt(fechaArray[0]);// guarda el anio de la fecha de nacimiento del array
 
-  if (fechaNacimiento.value === "") {//evalua si esta vacia la fecha de nacimiento
+  if (fechaNacimiento_elemento.value === "") {//evalua si esta vacia la fecha de nacimiento
 
-    marcarError("vacio", fechaNacimiento);
+    marcarError("vacio", fechaNacimiento_elemento);
 
   }
 
   else if (anioNacimiento > anioHoy)
-    marcarError("invalido", fechaNacimiento, "Año de nacimiento no puede ser mayor al año actual", labelFecha);
+    marcarError("invalido", fechaNacimiento_elemento, "Año de nacimiento no puede ser mayor al año actual", labelFecha);
 
 
   else if (mesHoy < mesNacimiento || (mesHoy === mesNacimiento && diaHoy < diaNacimiento)) { //evalua si el mes y el dia de nacimiento aun no suceden 
     edad = (anioHoy - anioNacimiento) - 1;
     edadInput.value = edad;
-    marcarCorrecto(fechaNacimiento, labelFecha);
+    marcarCorrecto(fechaNacimiento_elemento, labelFecha);
     contador++;
   }
 
@@ -229,7 +246,7 @@ function calcularEdad() {
 
     edad = anioHoy - anioNacimiento;
     edadInput.value = edad;
-    fechaNacimiento.style.borderColor = "green";
+    fechaNacimiento_elemento.style.borderColor = "green";
     contador++;
   }
 
@@ -246,46 +263,46 @@ correo_elemento.addEventListener("keydown", (e) => {
 });
 
 
-aPaterno_elemento.addEventListener("keydown", (e) => {
-  if (e.key === "Tab") {
-    verificarNombre();
-    contador--;
-  }
-});
+// aPaterno_elemento.addEventListener("keydown", (e) => {
+//   if (e.key === "Tab") {
+//     verificarNombre();
+//     contador--;
+//   }
+// });
 
-aMaterno_elemento.addEventListener("keydown", (e) => {
-  if (e.key === "Tab") {
-    verificarNombre();
-    contador--;
-  }
-});
+// aMaterno_elemento.addEventListener("keydown", (e) => {
+//   if (e.key === "Tab") {
+//     verificarNombre();
+//     contador--;
+//   }
+// });
 
-nombres_elemento.addEventListener("keydown", (e) => {
-  if (e.key === "Tab") {
-    verificarNombre();
-    contador--;
-  }
-});
-
-
-telefono_elemento.addEventListener("keydown", (e) => {
-  if (e.key === "Tab") {
-    validarTelefono();
-    contador--;
-  }
-});
+// nombres_elemento.addEventListener("keydown", (e) => {
+//   if (e.key === "Tab") {
+//     verificarNombre();
+//     contador--;
+//   }
+// });
 
 
-fechaNacimiento.addEventListener("keydown", (e) => {
-  if (e.key === "Tab") {
-    calcularEdad();
-    contador--;
-  }
-});
+// telefono_elemento.addEventListener("keydown", (e) => {
+//   if (e.key === "Tab") {
+//     validarTelefono();
+//     contador--;
+//   }
+// });
 
-valorNoControl_elemento.addEventListener("keydown", (e) => {
-  if (e.key === "Tab") {
-    validarNoControl();
-    contador--;
-  }
-});
+
+// fechaNacimiento_elemento.addEventListener("keydown", (e) => {
+//   if (e.key === "Tab") {
+//     calcularEdad();
+//     contador--;
+//   }
+// });
+
+// valorNoControl_elemento.addEventListener("keydown", (e) => {
+//   if (e.key === "Tab") {
+//     validarNoControl();
+//     contador--;
+//   }
+// });
