@@ -255,54 +255,13 @@ function calcularEdad() {
 
 }
 
-correo_elemento.addEventListener("keydown", (e) => {
+
+ 
+let eventoFecha=document.getElementById("fecha");
+eventoFecha.addEventListener("keydown", (e) => {
   if (e.key === "Tab") {
-    validarCorreo();
+    calcularEdad();
     contador--;
   }
 });
 
-
-// aPaterno_elemento.addEventListener("keydown", (e) => {
-//   if (e.key === "Tab") {
-//     verificarNombre();
-//     contador--;
-//   }
-// });
-
-// aMaterno_elemento.addEventListener("keydown", (e) => {
-//   if (e.key === "Tab") {
-//     verificarNombre();
-//     contador--;
-//   }
-// });
-
-// nombres_elemento.addEventListener("keydown", (e) => {
-//   if (e.key === "Tab") {
-//     verificarNombre();
-//     contador--;
-//   }
-// });
-
-
-// telefono_elemento.addEventListener("keydown", (e) => {
-//   if (e.key === "Tab") {
-//     validarTelefono();
-//     contador--;
-//   }
-// });
-
-
-// fechaNacimiento_elemento.addEventListener("keydown", (e) => {
-//   if (e.key === "Tab") {
-//     calcularEdad();
-//     contador--;
-//   }
-// });
-
-// valorNoControl_elemento.addEventListener("keydown", (e) => {
-//   if (e.key === "Tab") {
-//     validarNoControl();
-//     contador--;
-//   }
-// });

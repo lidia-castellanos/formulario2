@@ -1,5 +1,8 @@
 // scriptResultados.js (en la página "resultados.html")
 document.addEventListener("DOMContentLoaded", function() {
+    try {
+        
+    
     const tablaResultados = document.getElementById("tablaResultados");
       // Obtener los envíos almacenados en el almacenamiento local
     const envios = JSON.parse(localStorage.getItem("envios"));
@@ -18,4 +21,13 @@ document.addEventListener("DOMContentLoaded", function() {
         `;
         tablaResultados.appendChild(fila);
     });
+} catch (error) {
+        console.log("No hay elementos en memoria");
+}
 });
+
+function borrarDatos(){
+
+    localStorage.clear();
+    document.location.reload();
+}
