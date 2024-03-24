@@ -10,11 +10,17 @@
     background: linear-gradient(302deg, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
 
 }
-
+table thead {
+  text-align: center;
+}
 header h1 {
     color: black;
     text-align: center;
 }
+body h1{
+    text-align: center;
+}
+
 
 .container {
     

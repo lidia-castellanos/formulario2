@@ -44,7 +44,7 @@ botonEnviar.addEventListener("click", function () {
          // Redireccionar a la página de resultados
         window.open("resultados.html",'_blank');
    
-    // limpiarForm();
+    limpiarForm();
   }
 
   

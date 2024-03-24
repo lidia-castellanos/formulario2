@@ -5,10 +5,10 @@ document.addEventListener("DOMContentLoaded", function() {
     const envios = JSON.parse(localStorage.getItem("envios"));
      // Recorrer los envíos y agregar filas a la tabla
     envios.forEach((envio) => {
-        
+
         const fila = document.createElement("tr");
         fila.innerHTML = `
-            <td>${envio.id}</td>
+            <th scope="row">${envio.id}</th>
             <td>${envio.nombre}</td>
             <td>${envio.apellidos}</td>
             <td>${envio.numeroFinal}</td>
