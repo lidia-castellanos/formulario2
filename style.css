@@ -1,0 +1,66 @@
+* {
+    font-size: 1.2rem;
+
+
+}
+
+.cuerpa {
+    
+    background: rgb(238,174,202);
+    background: linear-gradient(302deg, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+
+}
+
+header h1 {
+    color: black;
+    text-align: center;
+}
+
+.container {
+    
+    border-radius: 5%;
+    border: 3px solid black;
+    margin-top: 2rem;
+
+
+}
+
+form .form-group input {
+    border: 2px solid black;
+    background-color: transparent;
+    width: 80%;
+
+}
+
+form .form-group label {
+    color: black;
+    text-decoration: bold;
+
+}
+
+form .btna {
+    margin-left: 40%;
+    width: 60%;
+
+}
+
+
+
+
+form .form-group #telefono {
+    width: 30%;
+}
+
+form .form-group #edad {
+    background-color: transparent;
+    width: 20%;
+}
+
+form .form-group #fecha {
+    width: 60%;
+}
+
+.mensajes {
+    font-size: 1.5rem;
+    color: red;
+}
